@@ -38,8 +38,7 @@ else ifeq ("$(wildcard $(path)/src/q-pyshow.1.0.2.f)","")
 endif
 
 #programs to make
-all: mkdirBin mkdirLib mkdirOutTxt mkdirOutRoot getFiles 
-#q-pythia.1.0.2.o main-q-pythia-pp.o main-q-pythia-pp.exe main-q-pythia.o main-q-pythia.exe main-q-pythiahadrons.o main-q-pythiahadrons.exe qPytToROOT.exe
+all: mkdirBin mkdirLib mkdirOutTxt mkdirOutRoot getFiles q-pythia.1.0.2.o main-q-pythia-pp.o main-q-pythia-pp.exe main-q-pythia.o main-q-pythia.exe main-q-pythiahadrons.o main-q-pythiahadrons.exe qPytToROOT.exe
 
 mkdirBin: 
 	$(MKDIR_BIN)
@@ -65,7 +64,7 @@ endif
 ifneq ("$(wildcard $(path)/src/main-q-pythia.1.0.2.f)","")
 	rm main-q-pythia.1.0.2.f
 else
-	mv main-q-pythia-pp.1.0.2.f src/
+	mv main-q-pythia.1.0.2.f src/
 endif
 ifneq ("$(wildcard $(path)/src/main-q-pythiahadrons.1.0.2.f)","")
 	rm main-q-pythiahadrons.1.0.2.f
