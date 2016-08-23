@@ -39,6 +39,13 @@ mkdirOutTxt:
 mkdirOutRoot: 
 	$(MKDIR_OUTROOT)
 
+getFiles:
+	curl -O http://igfae.usc.es/qatmc/q-pythia/v1.0/v1.0.2/q-pythia.1.0.2.tgz
+	tar -xzvf q-pythia.1.0.2.tgz
+	mv *.f src
+	rm q-pythia.1.0.2.tgz
+
+
 q-pythia.1.0.2.o: 
 	$(FC) -c -o $(path)/lib/q-pythia.1.0.2.o $(path)/src/q-pythia.1.0.2.f
 
@@ -73,7 +80,12 @@ clean:
 	rm -f $(path)/lib/main*.o 
 	rm -f $(path)/bin/*.exe
 
+ifneq ("$(wildcard $(path)/bin)","")
 	rmdir bin
+endif
+
+ifneq ("$(wildcard $(path)/lib)","")
 	rmdir lib
+endif
 
 .PHONY: all
